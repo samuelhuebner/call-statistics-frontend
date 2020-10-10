@@ -1,1 +1,8 @@
-dashboard component
+<mat-grid-list cols="2">
+    <mat-grid-tile>
+        <app-queue-status queueName="Zentrale-Hotline" [callsWaiting]="mainHotlineWaiting" phoneNumber="+4971716048610"></app-queue-status>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <app-queue-status queueName="Hagel-Hotline" [callsWaiting]="hailHotlineWaiting" phoneNumber="+4971716048650"></app-queue-status>
+    </mat-grid-tile>
+</mat-grid-list>

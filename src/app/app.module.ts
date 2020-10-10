@@ -1,23 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
+import { TokenInterceptorService as TokenInterceptor } from './services/token-interceptor/token-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { QueueStatusComponent } from './components/queue-status/queue-status.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatBadgeModule } from '@angular/material/badge';
+
+// import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -27,7 +31,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    QueueStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +44,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatGridListModule,
+    MatBadgeModule
+    // MatSnackBarModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     JwtHelperService
   ],
   bootstrap: [AppComponent]
