@@ -1,0 +1,25 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>
+            {{ appName }}
+        </span>
+
+
+        <span class="nav-spacer">
+
+        </span>
+        <span *ngIf="authService.isAuthenticated()">
+            <button mat-raised-button color="primary" (click)="onLogout()">Logout</button>
+        </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="authService.isAuthenticated()">
+        <span >
+            <button mat-button>
+                <span class="material-icons">
+                    dashboard
+                </span>
+                Dashboard
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
