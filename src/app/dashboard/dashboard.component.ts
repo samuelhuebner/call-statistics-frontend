@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { SocketioService } from '../services/socketio/socketio.service';
 import { CallApiService } from  '../services/call-api/call-api.service';
@@ -8,7 +8,7 @@ import { CallApiService } from  '../services/call-api/call-api.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy{
 
   socket: any;
   mainHotlineWaiting: number;
@@ -18,6 +18,11 @@ export class DashboardComponent implements OnInit {
     private socketService: SocketioService,
     private callApiService: CallApiService
   ) { }
+
+  // when the dashboard component is no longer active we have to disconnect the socket connection
+  ngOnDestroy(): void {
+    this.socket.disconnect();
+  }
 
   ngOnInit(): void {
     this.socketService.setupSocketConnection();
