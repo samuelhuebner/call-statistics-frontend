@@ -1,4 +1,4 @@
-<mat-grid-list cols="5">
+<mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)">
     <mat-grid-tile>
         <div class="queue__list">
             <h1>Hotline status</h1>
@@ -14,6 +14,7 @@
             </app-queue-status>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile colspan="2">
+    <mat-grid-tile [colspan]="doubleWindowSize">
+        <h1>Current calls</h1>
     </mat-grid-tile>
 </mat-grid-list>

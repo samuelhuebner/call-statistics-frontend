@@ -1,14 +1,22 @@
 mat-grid-tile {
-    border: solid 2px #000;
-
+    width: 100%;
+    // border: solid 2px #000;
     div {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
+        // display: flex;
+        // flex-wrap: wrap;
+        // align-items: flex-start;
         margin-left: 10px;
-        app-queue-status {
-            align-self: start;
-            min-width: 300px;
+        // app-queue-status {
+        //     align-self: start;
+        //     min-width: 300px;
+        // }
+    }
+}
+
+@media screen and (max-width: 620px) {
+    mat-grid-title {
+        div {
+            width: 70%;
         }
     }
 }

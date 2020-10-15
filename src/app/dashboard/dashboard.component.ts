@@ -8,11 +8,13 @@ import { CallApiService } from  '../services/call-api/call-api.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy{
+export class DashboardComponent implements OnInit, OnDestroy {
 
   socket: any;
   mainHotlineWaiting = 0;
   hailHotlineWaiting = 0;
+  breakpoint;
+  doubleWindowSize;
 
   constructor(
     private socketService: SocketioService,
@@ -40,6 +42,27 @@ export class DashboardComponent implements OnInit, OnDestroy{
     this.socket.on('updatehotline2', () => {
       this.getHotlineTwoCallCount();
     });
+
+    this.resizeGrid(window.innerWidth);
+  }
+
+  onResize(event) {
+    this.resizeGrid(event.target.innerWidth);
+  }
+
+  resizeGrid(windowSize: number) {
+    if (windowSize <= 620) {
+      this.breakpoint = 1;
+      this.doubleWindowSize = 1;
+    } else if (windowSize <= 956) {
+      this.doubleWindowSize = 1;
+      this.breakpoint = 2;
+    } else if (windowSize <= 1573) {
+      this.breakpoint = 3;
+    } else {
+      this.doubleWindowSize = 2;
+      this.breakpoint = 5;
+    }
   }
 
   async getHotlineOneCallCount() {
