@@ -11,8 +11,8 @@ import { CallApiService } from  '../services/call-api/call-api.service';
 export class DashboardComponent implements OnInit, OnDestroy{
 
   socket: any;
-  mainHotlineWaiting: number;
-  hailHotlineWaiting: number;
+  mainHotlineWaiting = 0;
+  hailHotlineWaiting = 0;
 
   constructor(
     private socketService: SocketioService,

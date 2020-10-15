@@ -1,8 +1,19 @@
-<mat-grid-list cols="2">
+<mat-grid-list cols="5">
     <mat-grid-tile>
-        <app-queue-status queueName="Zentrale-Hotline" [callsWaiting]="mainHotlineWaiting" phoneNumber="+4971716048610"></app-queue-status>
+        <div class="queue__list">
+            <h1>Hotline status</h1>
+            <app-queue-status
+                queueName="Zentrale-Hotline"
+                [callsWaiting]="mainHotlineWaiting"
+                phoneNumber="+4971716048610">
+            </app-queue-status>
+            <app-queue-status
+                queueName="Hagel-Hotline"
+                [callsWaiting]="hailHotlineWaiting"
+                phoneNumber="+4971716048650">
+            </app-queue-status>
+        </div>
     </mat-grid-tile>
-    <mat-grid-tile>
-        <app-queue-status queueName="Hagel-Hotline" [callsWaiting]="hailHotlineWaiting" phoneNumber="+4971716048650"></app-queue-status>
+    <mat-grid-tile colspan="2">
     </mat-grid-tile>
 </mat-grid-list>
