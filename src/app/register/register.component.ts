@@ -26,11 +26,17 @@ export class RegisterComponent implements OnInit {
     this.authService.createUser(user)
       .then(() => {
         this.router.navigate(['login']);
+        this.snackBar.open("Please verify your account with the email we sent you", "Okay", { duration: 3000 });
       })
       .catch((error) => {
-        console.log(error);
-        this.snackBar.open("registration failed", "Okay", { duration: 2000 });
-        console.log('registration failed');
+        const internalMsg = error?.error?.error?.internalMsg || error?.error?.error?.name;
+        if (internalMsg === 'Not allowed domain') {
+          this.snackBar.open("Invalid domain name", "Okay", { duration: 3000 });
+        } else if (internalMsg === 'SequelizeUniqueConstraintError') {
+          this.snackBar.open("User with such an email already exists", "Okay", { duration: 3000 });
+        } else {
+          this.snackBar.open("Unknown error during registering", "Okay", { duration: 3000 });
+        }
       });
   }
 
