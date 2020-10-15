@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = `${environment.baseUrl}/auth/login`
+  private signUpUrl = `${environment.baseUrl}/auth/signup`;
+  private loginUrl = `${environment.baseUrl}/auth/login`;
   private loggedInUser: User;
 
   constructor(
@@ -34,9 +35,12 @@ export class AuthService {
     }
   }
 
-  public async createUser(user: User) {
-    console.log('creating user');
-    //TODO:
+  public createUser(user: User) {
+    return this.http.post<Object>(this.signUpUrl, {
+        username: user.username,
+        password: user.password,
+        name: user.name
+      }).toPromise();
   }
 
   public logoutUser() {

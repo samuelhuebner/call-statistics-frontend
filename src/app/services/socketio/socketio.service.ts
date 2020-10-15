@@ -15,5 +15,6 @@ export class SocketioService {
       secure: true,
       path: `/websocket/socket.io`
     });
+
   }
 }
