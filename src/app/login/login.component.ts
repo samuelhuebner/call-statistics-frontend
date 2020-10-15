@@ -13,6 +13,8 @@ import { User } from '../models/User.model';
 })
 export class LoginComponent implements OnInit {
 
+  hide = true;
+  
   constructor(
     private authService: AuthService,
     private router: Router

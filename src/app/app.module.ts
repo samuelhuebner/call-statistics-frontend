@@ -20,8 +20,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
 
-// import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -45,8 +46,9 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatButtonModule,
     MatToolbarModule,
     MatGridListModule,
-    MatBadgeModule
-    // MatSnackBarModule
+    MatBadgeModule,
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

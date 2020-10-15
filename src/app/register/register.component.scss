@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // margin-top: 20%;
+    margin-top: 70px;
 }
 
 .login__card {
@@ -11,9 +11,32 @@
 
 
 .login__button {
-    
+
 }
 
 .login__link {
     text-align: center;
+}
+
+.input__errors {
+    color: red;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-content {
+    margin-top: 20px;
+}
+
+mat-card-actions {
+    margin-left: 1px;
+}
+
+mat-card-footer, div, a {
+    color: grey;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
