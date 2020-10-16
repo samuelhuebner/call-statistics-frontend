@@ -15,6 +15,10 @@
         </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="doubleWindowSize">
-        <h1>Current calls</h1>
+        <div>
+            <app-current-calls
+                [currentCallsInput]="currentCalls">
+            </app-current-calls>
+        </div>
     </mat-grid-tile>
 </mat-grid-list>

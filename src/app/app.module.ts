@@ -13,6 +13,8 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QueueStatusComponent } from './components/queue-status/queue-status.component';
+import { CallComponent } from './components/call/call.component';
+import { CurrentCallsComponent } from './components/current-calls/current-calls.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,7 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
@@ -33,7 +35,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RegisterComponent,
     HeaderComponent,
     DashboardComponent,
-    QueueStatusComponent
+    QueueStatusComponent,
+    CallComponent,
+    CurrentCallsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatGridListModule,
     MatBadgeModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

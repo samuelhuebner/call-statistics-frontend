@@ -3,18 +3,21 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SocketioService } from '../services/socketio/socketio.service';
 import { CallApiService } from  '../services/call-api/call-api.service';
 
+import { Call } from '../models/Call.model';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-
   socket: any;
   mainHotlineWaiting = 0;
   hailHotlineWaiting = 0;
-  breakpoint;
-  doubleWindowSize;
+  breakpoint: number;
+  doubleWindowSize: number;
+
+  public currentCalls: Call[];
 
   constructor(
     private socketService: SocketioService,
@@ -27,22 +30,33 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // when the dashboard is initialized we need to setup the socket connection
+    // and register all event handlers for the socket connection
     this.socketService.setupSocketConnection();
     this.socket = this.socketService.socket;
-
     this.socket.on('updatehotline1', () => {
       this.getHotlineOneCallCount();
     });
-
     this.socket.on('update', () => {
       this.getHotlineOneCallCount();
       this.getHotlineTwoCallCount();
     });
-
     this.socket.on('updatehotline2', () => {
       this.getHotlineTwoCallCount();
     });
 
+    this.socket.on('callInserted', this.processCall.bind(this));
+    this.socket.on('callUpdated', this.processCall.bind(this));
+    this.socket.on('callFinished', this.removeCall.bind(this));
+
+    // the next step is to get the current calls from the api for the dashboard
+    this.callApiService.getCurrentCalls()
+      .then((calls: Call[]) => {
+        this.currentCalls = calls;
+      });
+
+
+    // this is nessesary to resize the grid if we are in the mobile view!
     this.resizeGrid(window.innerWidth);
   }
 
@@ -59,6 +73,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.breakpoint = 2;
     } else if (windowSize <= 1573) {
       this.breakpoint = 3;
+      this.doubleWindowSize = 2;
     } else {
       this.doubleWindowSize = 2;
       this.breakpoint = 5;
@@ -75,6 +90,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.callApiService.getWaiting('api/queue-status/hotline2').subscribe((data: any) => {
       this.hailHotlineWaiting = data.callsWaiting;
     });
+  }
+
+  private processCall(callId: string) {
+    this.callApiService.getCurrentCalls()
+      .then((res: Call[]) => this.currentCalls = res);
+  }
+
+  private removeCall(callId: string) {
+    this.currentCalls = this.currentCalls.filter((item) => item.callId != callId)
   }
 
 }
