@@ -7,8 +7,19 @@
         class="mat-elevation-z8">
             <!-- Call Initiation Column -->
             <ng-container matColumnDef="callInit">
-              <th mat-header-cell *matHeaderCellDef>Call time: </th>
-              <td mat-cell *matCellDef="let call"> {{ call.callInitiation.callInitiationTime | date:'HH:mm' }} </td>
+                <th mat-header-cell *matHeaderCellDef>Call time: </th>
+                <td mat-cell *matCellDef="let call">
+                    <div 
+                        (mouseenter)="setVisible()"
+                        (mouseleave)="setInvisible()">
+                        <mat-icon
+                            (click)="endCall(call)"
+                            *ngIf="showDeleteButton && isAdmin">delete</mat-icon>
+                        <span>
+                            {{ call.callInitiation.callInitiationTime | date:'HH:mm' }}
+                        </span>
+                    </div>
+                </td>
             </ng-container>
             
             <ng-container matColumnDef="callDirection">
@@ -42,7 +53,11 @@
             
             <ng-container matColumnDef="destination">
                 <th mat-header-cell *matHeaderCellDef> Destination: </th>
-                <td mat-cell *matCellDef="let call"> {{ call.destination?.accountNumber || call.destination?.number }} </td>
+                <td
+                    mat-cell
+                    *matCellDef="let call">
+                    {{ call.destination?.accountNumber || call.destination?.number }}
+                </td>
             </ng-container>
             
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -17,7 +17,8 @@
     <mat-grid-tile [colspan]="doubleWindowSize">
         <div>
             <app-current-calls
-                [currentCallsInput]="currentCalls">
+                [currentCallsInput]="currentCalls"
+                (removeCall)=endCall($event)>
             </app-current-calls>
         </div>
     </mat-grid-tile>

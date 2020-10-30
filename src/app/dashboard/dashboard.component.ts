@@ -4,6 +4,7 @@ import { SocketioService } from '../services/socketio/socketio.service';
 import { CallApiService } from  '../services/call-api/call-api.service';
 
 import { Call } from '../models/Call.model';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,10 +19,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   doubleWindowSize: number;
 
   public currentCalls: Call[];
+  private isAdminSession: Boolean;
 
   constructor(
     private socketService: SocketioService,
-    private callApiService: CallApiService
+    private callApiService: CallApiService,
+    private authService: AuthService
   ) { }
 
   // when the dashboard component is no longer active we have to disconnect the socket connection
@@ -30,6 +33,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.isAdminSession = this.authService.isAdmin();
     // when the dashboard is initialized we need to setup the socket connection
     // and register all event handlers for the socket connection
     this.socketService.setupSocketConnection();
@@ -54,7 +58,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .then((calls: Call[]) => {
         this.currentCalls = calls;
       });
-
 
     // this is nessesary to resize the grid if we are in the mobile view!
     this.resizeGrid(window.innerWidth);
@@ -99,6 +102,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   private removeCall(callId: string) {
     this.currentCalls = this.currentCalls.filter((item) => item.callId != callId)
+  }
+
+  public endCall(call: Call) {
+    this.callApiService.endCall(call.callId);
   }
 
 }

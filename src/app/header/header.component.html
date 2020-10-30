@@ -3,22 +3,37 @@
         <span>
             {{ appName }}
         </span>
-
-
-        <span class="nav-spacer">
-
-        </span>
+        <span class="nav-spacer"></span>
+        <!-- Logout Button (only shown if authenticated) -->
         <span *ngIf="authService.isAuthenticated()">
             <button mat-raised-button color="primary" (click)="onLogout()">Logout</button>
         </span>
     </mat-toolbar-row>
-    <mat-toolbar-row *ngIf="authService.isAuthenticated()">
-        <span >
-            <button mat-button>
+
+    <!-- second row with all avaliable buttons -->
+    <mat-toolbar-row *ngIf="isAuthenticated">
+        <span class="navigation-button">
+            <button mat-button (click)="router.navigate(['dashboard'])">
                 <span class="material-icons">
                     dashboard
                 </span>
                 Dashboard
+            </button>
+        </span>
+        <span >
+            <button mat-button class="navigation-button">
+                <span class="material-icons">
+                    contacts
+                </span>
+                Contacts
+            </button>
+        </span>
+        <span *ngIf="isAdmin">
+            <button mat-button class="navigation-button" (click)="router.navigate(['settings'])">
+                <span class="material-icons">
+                    settings_applications
+                </span>
+                Settings
             </button>
         </span>
     </mat-toolbar-row>
