@@ -27,6 +27,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AllCallsComponent } from './components/all-calls/all-calls.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DashboardComponent,
     QueueStatusComponent,
     CallComponent,
-    CurrentCallsComponent
+    CurrentCallsComponent,
+    AllCallsComponent
   ],
   imports: [
     BrowserModule,

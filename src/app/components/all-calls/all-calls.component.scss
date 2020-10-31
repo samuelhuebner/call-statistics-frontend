@@ -1,0 +1,75 @@
+.call__row {
+    display: grid;
+    grid-template-columns: 70px 90px 90px 200px 200px auto auto;
+    margin-top: 5px;
+    margin-right: 5px;
+    // min-height: 30px
+
+    border: 0.5px solid grey;
+
+    span {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    min-height: 50px;
+}    
+
+.all-calls__container {
+    max-height: 800px;
+    overflow: auto;
+    table {
+        width: 100%;
+    }
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mat-table {
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+.successful_icon {
+    color: green;
+}
+
+.failed_icon {
+    color: red;
+}
+.missed_icon {
+    color: red;
+}
+
+.mat-column-status {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 9% !important;
+    max-width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-callInit {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 10% !important;
+    max-width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Call } from 'src/app/models/Call.model';
 
 @Component({
   selector: 'app-call',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./call.component.scss']
 })
 export class CallComponent implements OnInit {
+
+  @Input() call: Call;
 
   constructor() { }
 
