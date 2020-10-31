@@ -18,8 +18,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   breakpoint: number;
   doubleWindowSize: number;
 
-  public currentCalls: Call[];
   private isAdminSession: Boolean;
+  public currentCalls: Call[];
+  public todaysCalls: Call[];
 
   constructor(
     private socketService: SocketioService,
@@ -58,6 +59,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .then((calls: Call[]) => {
         this.currentCalls = calls;
       });
+
+    this.callApiService.getCalls()
+      .then((calls: Call[]) => {
+        this.todaysCalls = calls;
+      })
 
     // this is nessesary to resize the grid if we are in the mobile view!
     this.resizeGrid(window.innerWidth);
@@ -101,7 +107,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   private removeCall(callId: string) {
-    this.currentCalls = this.currentCalls.filter((item) => item.callId != callId)
+    this.currentCalls = this.currentCalls.filter((item) => item.callId != callId);
+    setTimeout(this.delayed.bind(this), 1000);
+  }
+
+
+  private delayed() {
+    this.callApiService.getCalls()
+      .then((res: Call[]) => {
+        this.todaysCalls = res;
+   });
   }
 
   public endCall(call: Call) {
