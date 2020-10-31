@@ -1,10 +1,9 @@
 <div class="current-calls__container">
-    <h1> Current calls</h1>
     <table
         class="current-calls__table"
         mat-table
         [dataSource]="currentCalls"
-        class="mat-elevation-z8">
+        >
             <!-- Call Initiation Column -->
             <ng-container matColumnDef="callInit">
                 <th mat-header-cell *matHeaderCellDef>Call time: </th>
