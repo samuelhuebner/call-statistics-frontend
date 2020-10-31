@@ -52,6 +52,14 @@ export class CallApiService {
       .toPromise();
   }
 
+  public getCalls(): Promise<Call[]> {
+    const apiURL = `${environment.baseUrl}/api/call-stats/calls`;
+    return this
+      .httpClient
+      .get<Call[]>(apiURL)
+      .toPromise();
+  }
+
   public getUsers(): Promise<User[]> {
     const apiURL = `${environment.baseUrl}/api/admin/users/`;
     return this.httpClient.get<User[]>(apiURL)
