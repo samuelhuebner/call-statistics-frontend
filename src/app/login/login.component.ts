@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         } else if (internalMsg === 'User not found!') {
           this.snackBar.open("User not found!", "Okay", { duration: 3000 });
         } else {
+          console.error(error);
           this.snackBar.open("Unknown error during login!", "Okay", { duration: 3000 });
         }
       });

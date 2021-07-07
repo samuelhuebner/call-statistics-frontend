@@ -5,6 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
+import { SettingsModule } from './settings/settings.module';
+
 import { TokenInterceptorService as TokenInterceptor } from './services/token-interceptor/token-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,8 +27,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
+import { AllCallsComponent } from './components/all-calls/all-calls.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     DashboardComponent,
     QueueStatusComponent,
     CallComponent,
-    CurrentCallsComponent
+    CurrentCallsComponent,
+    AllCallsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatBadgeModule,
     MatIconModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    SettingsModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

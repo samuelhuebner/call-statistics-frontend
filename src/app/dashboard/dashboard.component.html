@@ -1,24 +1,32 @@
-<mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)">
-    <mat-grid-tile>
-        <div class="queue__list">
-            <h1>Hotline status</h1>
-            <app-queue-status
-                queueName="Zentrale-Hotline"
-                [callsWaiting]="mainHotlineWaiting"
-                phoneNumber="+4971716048610">
-            </app-queue-status>
-            <app-queue-status
-                queueName="Hagel-Hotline"
-                [callsWaiting]="hailHotlineWaiting"
-                phoneNumber="+4971716048650">
-            </app-queue-status>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="doubleWindowSize">
-        <div>
-            <app-current-calls
-                [currentCallsInput]="currentCalls">
-            </app-current-calls>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
+<div class="dashboard__container">
+    <div class="queue__list">
+        <h1>Hotline status</h1>
+        <app-queue-status
+            queueName="Zentrale-Hotline"
+            [callsWaiting]="mainHotlineWaiting"
+            phoneNumber="+4971716048610"
+            [adminSession]="isAdminSession"
+            (resetEvent)=resetHotline(1)>
+        </app-queue-status>
+        <app-queue-status
+            queueName="Hagel-Hotline"
+            [callsWaiting]="hailHotlineWaiting"
+            phoneNumber="+4971716048650"
+            [adminSession]="isAdminSession"
+            (resetEvent)="resetHotline(2)">
+        </app-queue-status>
+    </div>
+    <div class="current-calls__list">
+        <h1>Current calls</h1>
+        <app-current-calls
+            [currentCallsInput]="currentCalls"
+            (removeCall)=endCall($event)>
+        </app-current-calls>
+    </div>
+    <div class="all-calls__list">
+        <h1>Today's calls</h1>
+        <app-all-calls
+            [calls]="todaysCalls">
+        </app-all-calls>
+    </div>
+</div>

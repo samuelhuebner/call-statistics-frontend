@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { SocketioService } from '../services/socketio/socketio.service';
-import { CallApiService } from  '../services/call-api/call-api.service';
+import { CallApiService } from '../services/call-api/call-api.service';
 
 import { Call } from '../models/Call.model';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,11 +18,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   breakpoint: number;
   doubleWindowSize: number;
 
+  public isAdminSession: boolean;
   public currentCalls: Call[];
+  public todaysCalls: Call[];
 
   constructor(
     private socketService: SocketioService,
-    private callApiService: CallApiService
+    private callApiService: CallApiService,
+    private authService: AuthService
   ) { }
 
   // when the dashboard component is no longer active we have to disconnect the socket connection
@@ -30,6 +34,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.isAdminSession = this.authService.isAdmin();
     // when the dashboard is initialized we need to setup the socket connection
     // and register all event handlers for the socket connection
     this.socketService.setupSocketConnection();
@@ -55,16 +60,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.currentCalls = calls;
       });
 
+    this.callApiService.getCalls()
+      .then((calls: Call[]) => {
+        this.todaysCalls = calls;
+      })
 
     // this is nessesary to resize the grid if we are in the mobile view!
     this.resizeGrid(window.innerWidth);
   }
 
-  onResize(event) {
+  public onResize(event): void {
     this.resizeGrid(event.target.innerWidth);
   }
 
-  resizeGrid(windowSize: number) {
+  public resizeGrid(windowSize: number): void {
     if (windowSize <= 620) {
       this.breakpoint = 1;
       this.doubleWindowSize = 1;
@@ -98,7 +107,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   private removeCall(callId: string) {
-    this.currentCalls = this.currentCalls.filter((item) => item.callId != callId)
+    this.currentCalls = this.currentCalls.filter((item) => item.callId != callId);
+    setTimeout(this.delayed.bind(this), 1000);
   }
 
+
+  private delayed() {
+    this.callApiService.getCalls()
+      .then((res: Call[]) => {
+        this.todaysCalls = res;
+      });
+  }
+
+  public endCall(call: Call) {
+    this.callApiService.endCall(call.callId);
+  }
+
+  public resetHotline(hotlineId: number): void {
+    this.callApiService.resetHotline(hotlineId);
+  }
 }

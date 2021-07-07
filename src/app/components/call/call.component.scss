@@ -1,0 +1,13 @@
+.call__row {
+    display: grid;
+    grid-template-columns: 70px 90px 90px 200px 200px auto auto;
+    margin-top: 5px;
+    margin-right: 5px;
+    min-height: 30px;
+
+    border: 2px solid black;
+}    
+
+.call-time {
+    margin-left: 10px;
+}

@@ -1,1 +1,23 @@
-
+<div class="call__row">
+    <span class="call-time">
+        {{ call.callInitiation.callInitiationTime | date:'HH:mm'  }}
+    </span>
+    <span class="direction">
+        {{ call.callDirection }}
+    </span>
+    <span class="endingReason">
+        {{ call.endingReason }}
+    </span>
+    <span class="number">
+        {{ call.caller?.phoneNumber || call.caller?.accountNumber }}
+    </span>
+    <span class="calledNumber">
+        {{ call.calledNumber }}
+    </span>
+    <span class="callRingingTime">
+        {{ call.callRingingTime }}
+    </span>
+    <span class="callTalkDuration">
+        {{ call.callTalkingTime }}
+    </span>
+</div>
