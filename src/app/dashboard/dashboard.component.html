@@ -4,16 +4,20 @@
         <app-queue-status
             queueName="Zentrale-Hotline"
             [callsWaiting]="mainHotlineWaiting"
-            phoneNumber="+4971716048610">
+            phoneNumber="+4971716048610"
+            [adminSession]="isAdminSession"
+            (resetEvent)=resetHotline(1)>
         </app-queue-status>
         <app-queue-status
             queueName="Hagel-Hotline"
             [callsWaiting]="hailHotlineWaiting"
-            phoneNumber="+4971716048650">
+            phoneNumber="+4971716048650"
+            [adminSession]="isAdminSession"
+            (resetEvent)="resetHotline(2)">
         </app-queue-status>
     </div>
     <div class="current-calls__list">
-        <h1> Current calls</h1>
+        <h1>Current calls</h1>
         <app-current-calls
             [currentCallsInput]="currentCalls"
             (removeCall)=endCall($event)>

@@ -1,8 +1,14 @@
 <div>
     <mat-card>
         <mat-card-title>
-            {{ queueName }}
-            <mat-icon [matBadge]="callsWaiting">call</mat-icon>
+            <div class="queue-status__container">
+                {{ queueName }}
+                <div class="queue-status__row">
+                    <mat-icon [matBadge]="callsWaiting" class="queue-status__call-count">call</mat-icon>
+                    <mat-icon class="queue-status__reset-queue" *ngIf="adminSession" (click)="triggerReset()">
+                        restart_alt</mat-icon>
+                </div>
+            </div>
         </mat-card-title>
         <mat-card-subtitle>
             {{ phoneNumber }}

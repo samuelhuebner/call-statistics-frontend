@@ -52,6 +52,18 @@ export class CallApiService {
       .toPromise();
   }
 
+  /**
+   * attempts to reset a hotline with the backend
+   */
+  public resetHotline(hotlineId: number): Promise<any> {
+    const apiURL = `${environment.baseUrl}/api/queue-status/hotline/reset/`;
+
+    return this
+      .httpClient
+      .post(apiURL, { hotlineId })
+      .toPromise();
+  }
+
   public getCalls(): Promise<Call[]> {
     const apiURL = `${environment.baseUrl}/api/call-stats/calls`;
     return this

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { SocketioService } from '../services/socketio/socketio.service';
-import { CallApiService } from  '../services/call-api/call-api.service';
+import { CallApiService } from '../services/call-api/call-api.service';
 
 import { Call } from '../models/Call.model';
 import { AuthService } from '../services/auth/auth.service';
@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   breakpoint: number;
   doubleWindowSize: number;
 
-  private isAdminSession: Boolean;
+  public isAdminSession: boolean;
   public currentCalls: Call[];
   public todaysCalls: Call[];
 
@@ -69,11 +69,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.resizeGrid(window.innerWidth);
   }
 
-  onResize(event) {
+  public onResize(event): void {
     this.resizeGrid(event.target.innerWidth);
   }
 
-  resizeGrid(windowSize: number) {
+  public resizeGrid(windowSize: number): void {
     if (windowSize <= 620) {
       this.breakpoint = 1;
       this.doubleWindowSize = 1;
@@ -116,11 +116,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.callApiService.getCalls()
       .then((res: Call[]) => {
         this.todaysCalls = res;
-   });
+      });
   }
 
   public endCall(call: Call) {
     this.callApiService.endCall(call.callId);
   }
 
+  public resetHotline(hotlineId: number): void {
+    this.callApiService.resetHotline(hotlineId);
+  }
 }

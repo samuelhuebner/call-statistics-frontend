@@ -4,6 +4,24 @@ div {
     max-width: 300px;
 }
 
-mat-icon {
+.queue-status__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.queue-status__row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.queue-status__call-count {
     margin-left: 5px;
+}
+
+.queue-status__reset-queue {
+    cursor: pointer;
 }
