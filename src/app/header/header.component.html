@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <mat-toolbar-row class="nav__first-row" class='dark-background'>
+    <mat-toolbar-row class="nav__first-row dark-background">
         <span class="nav__logo">
             <img src="../../assets/images/logo.svg" alt="Telect" />
         </span>
@@ -11,23 +11,23 @@
     </mat-toolbar-row>
 
     <!-- second row with all avaliable buttons -->
-    <mat-toolbar-row *ngIf="isAuthenticated" class='dark-background'>
+    <mat-toolbar-row *ngIf="isAuthenticated" class="dark-background">
         <span class="navigation-button">
             <button mat-button (click)="router.navigate(['dashboard'])">
                 <span class="material-icons"> dashboard </span>
-                Dashboard
+                <span class="hide-mobile">Dashboard</span>
             </button>
         </span>
         <span>
             <button mat-button class="navigation-button">
                 <span class="material-icons"> contacts </span>
-                Contacts
+                <span class="hide-mobile">Contacts</span>
             </button>
         </span>
         <span *ngIf="isAdmin">
             <button mat-button class="navigation-button" (click)="router.navigate(['settings'])">
                 <span class="material-icons"> settings_applications </span>
-                Settings
+                <span class="hide-mobile">Settings</span>
             </button>
         </span>
     </mat-toolbar-row>

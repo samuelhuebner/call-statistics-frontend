@@ -22,3 +22,9 @@ body {
   background: $color-primary;
   color: $color-accent;
 }
+
+@media screen and (max-width: 600px) {
+    .hide-mobile {
+        display: none;
+    }
+}

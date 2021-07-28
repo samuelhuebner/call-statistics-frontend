@@ -9,7 +9,7 @@
 
     img {
         max-height: 160px;
-        transform: translate(-50px, -50px);
+        transform: translate(-50px, -40px);
     }
 }
 
@@ -17,6 +17,8 @@
     height: 80px;
     display: flex;
     align-items: center;
+
+    border-bottom: 0.1px solid $color-primary-transparent;
 }
 
 .navigation-button {
@@ -24,8 +26,9 @@
     color: $color-primary;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
     .navigation-button {
-        margin-right: auto;
+        margin-right: 2px;
+        min-width: 50px;
     }
 }
