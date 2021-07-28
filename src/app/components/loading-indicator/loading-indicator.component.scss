@@ -1,0 +1,21 @@
+.loading-indicator__container {
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.loading-indicator__container-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-indicator__container {
+    transition: all 0.5s ease;
+}

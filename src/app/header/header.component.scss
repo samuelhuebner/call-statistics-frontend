@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .nav-spacer {
     flex: 1 1 auto;
 }
@@ -7,16 +9,19 @@
 
     img {
         max-height: 160px;
-        transform: translate(-50px, -40px);
+        transform: translate(-50px, -50px);
     }
 }
 
 .nav__first-row {
     height: 80px;
+    display: flex;
+    align-items: center;
 }
 
 .navigation-button {
     margin-right: 20px;
+    color: $color-primary;
 }
 
 @media screen and (max-width: 450px) {

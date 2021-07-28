@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "./styles/variables";
+
 html,
 body {
     height: 100%;
@@ -7,11 +9,16 @@ body {
 body {
     margin: 0;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
-    background-color: #fafafa;
 }
 
 .container {
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+    height: 100vh;
+}
+
+.button {
+  background: $color-primary;
+  color: $color-accent;
 }

@@ -1,17 +1,17 @@
 <mat-toolbar>
-    <mat-toolbar-row class="nav__first-row">
+    <mat-toolbar-row class="nav__first-row" class='dark-background'>
         <span class="nav__logo">
             <img src="../../assets/images/logo.svg" alt="Telect" />
         </span>
         <span class="nav-spacer"></span>
         <!-- Logout Button (only shown if authenticated) -->
         <span *ngIf="authService.isAuthenticated()">
-            <button mat-raised-button color="primary" (click)="onLogout()">Logout</button>
+            <button mat-raised-button class="button" (click)="onLogout()">Logout</button>
         </span>
     </mat-toolbar-row>
 
     <!-- second row with all avaliable buttons -->
-    <mat-toolbar-row *ngIf="isAuthenticated">
+    <mat-toolbar-row *ngIf="isAuthenticated" class='dark-background'>
         <span class="navigation-button">
             <button mat-button (click)="router.navigate(['dashboard'])">
                 <span class="material-icons"> dashboard </span>
