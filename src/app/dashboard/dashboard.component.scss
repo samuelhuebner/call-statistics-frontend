@@ -1,106 +1,39 @@
-mat-grid-tile {
-    width: 100%;
-    // border: solid 2px #000;
-    div {
-        align-self: start;
-        // display: flex;
-        // flex-wrap: wrap;
-        // align-items: flex-start;
-        // margin-left: 10px;
-        // margin-right: 10px;
-        margin-top: 10px;
-        // app-queue-status {
-        //     align-self: start;
-        //     min-width: 300px;
-        // }
-        width: 100%;
-    }
-
-    // Adds scrollable css property to mat-tiles
-    overflow: auto;
+.dashboard__container {
+    margin: 10px 10px 0;
 }
 
-.dashboard__container {
-    max-height: 100%;
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 90px);
-    // grid-auto-rows: 50px;
-    // grid-template-columns: 400px auto min(40%);
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-
-    // debug border
-    // div {
-    //     border: 1px solid black;
-    // }
+.dashboard__row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .queue__list {
-    margin-right: auto;
-    margin-left: auto;
-
-    grid-row: 1 / 1;
-    grid-column: 1 / 4;
+    width: 400px;
 }
 
 .current-calls__list {
-    grid-row: 1 / 1;
-    grid-column: 4 / 15;
-    max-height: 50%;
+    width: 100%;
 }
 
 .all-calls__list {
     app-all-calls {
-        max-height: 30%;
-        overflow: auto;
-    }
-
-    grid-row: 1 / 1;
-    grid-column: 15 / end;
-
-    max-height: 50%;
-}
-
-@media screen and (max-width: 2200px) {
-    .current-calls__list {
-        grid-column: 4 / 13;
-    }
-
-    .all-calls__list {
-        grid-column: 13 / end;
-    }
-}
-@media screen and (max-width: 1800px) {
-    .current-calls__list {
-        grid-column: 4 / end;
-    }
-
-    .all-calls__list {
-        grid-row: 2 / 2;
-        grid-column: 1 / end;
+        //max-height: 30%;
+        //overflow: auto;
     }
 }
 
-@media screen and (max-width: 850px) {
-    .queue__list {
-        grid-column: 1 / end;
-    }
-
-    .current-calls__list {
-        grid-row: 2 / 2;
-        grid-column: 1 / end;
-    }
-
-    .all-calls__list {
-        grid-row: 3 / 3;
-    }
-}
-
-@media screen and (max-width: 450) {
+@media screen and (max-width: 600px) {
     .dashboard__container {
-        grid-template-columns: auto;
+
+    }
+
+    .dashboard__row {
+        flex-direction: column;
+    }
+
+    .queue__list {
+        width: unset;
     }
 }

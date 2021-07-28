@@ -1,26 +1,28 @@
 <div class="dashboard__container">
-    <div class="queue__list">
-        <h1>Hotline status</h1>
-        <app-queue-status
-            queueName="Zentrale-Hotline"
-            [callsWaiting]="mainHotlineWaiting"
-            phoneNumber="+4971716048610"
-            [adminSession]="isAdminSession"
-            (resetEvent)="resetHotline(1)"
-        >
-        </app-queue-status>
-        <app-queue-status
-            queueName="Hagel-Hotline"
-            [callsWaiting]="hailHotlineWaiting"
-            phoneNumber="+4971716048650"
-            [adminSession]="isAdminSession"
-            (resetEvent)="resetHotline(2)"
-        >
-        </app-queue-status>
-    </div>
-    <div class="current-calls__list">
-        <h1>Current calls</h1>
-        <app-current-calls [currentCallsInput]="currentCalls" (removeCall)="endCall($event)"> </app-current-calls>
+    <div class="dashboard__row">
+        <div class="queue__list dashboard__item">
+            <h1>Hotline status</h1>
+            <app-queue-status
+                queueName="Zentrale-Hotline"
+                [callsWaiting]="mainHotlineWaiting"
+                phoneNumber="+4971716048610"
+                [adminSession]="isAdminSession"
+                (resetEvent)="resetHotline(1)"
+            >
+            </app-queue-status>
+            <app-queue-status
+                queueName="Hagel-Hotline"
+                [callsWaiting]="hailHotlineWaiting"
+                phoneNumber="+4971716048650"
+                [adminSession]="isAdminSession"
+                (resetEvent)="resetHotline(2)"
+            >
+            </app-queue-status>
+        </div>
+        <div class="current-calls__list">
+            <h1>Current calls</h1>
+            <app-current-calls [currentCallsInput]="currentCalls" (removeCall)="endCall($event)"> </app-current-calls>
+        </div>
     </div>
     <div class="all-calls__list">
         <h1>Today's calls</h1>

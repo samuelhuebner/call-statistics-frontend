@@ -23,8 +23,19 @@ body {
   color: $color-accent;
 }
 
+h1 {
+    color: $color-primary;
+}
+
+// media query
 @media screen and (max-width: 600px) {
     .hide-mobile {
         display: none;
     }
 }
+
+.mat-badge-content {
+    background: $color-primary !important;
+    color: $color-accent !important;
+}
+

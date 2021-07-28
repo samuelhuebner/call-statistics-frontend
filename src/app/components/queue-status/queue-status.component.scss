@@ -1,7 +1,8 @@
+@import "../../../styles/variables";
 div {
     margin-top: 10px;
-    margin-right: 10px;
-    max-width: 300px;
+    margin-bottom: 10px;
+    max-width: 400px;
 }
 
 .queue-status__container {
@@ -24,4 +25,11 @@ div {
 
 .queue-status__reset-queue {
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 600px) {
+    div {
+        max-width: 95vw;
+    }
 }

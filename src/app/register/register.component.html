@@ -2,7 +2,9 @@
     <div class="login__container">
         <mat-card class="login__card">
             <form #loginForm="ngForm" novalidate (ngSubmit)="onSubmit(loginForm.value)">
-                <mat-card-title>Register</mat-card-title>
+                <mat-card-title>
+                    <h1>Register</h1>
+                </mat-card-title>
                 <mat-card-content>
                     <div>
                         <mat-form-field appearance="fill">
@@ -46,12 +48,7 @@
                 </mat-card-content>
 
                 <mat-card-actions>
-                    <button
-                        mat-raised-button
-                        type="submit"
-                        class="login__button button"
-                        [disabled]="!loginForm.valid"
-                    >
+                    <button mat-raised-button type="submit" class="login__button button" [disabled]="!loginForm.valid">
                         Register
                     </button>
                 </mat-card-actions>
