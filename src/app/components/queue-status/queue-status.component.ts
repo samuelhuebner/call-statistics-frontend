@@ -1,25 +1,23 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-queue-status',
-  templateUrl: './queue-status.component.html',
-  styleUrls: ['./queue-status.component.scss']
+    selector: 'app-queue-status',
+    templateUrl: './queue-status.component.html',
+    styleUrls: ['./queue-status.component.scss'],
 })
 export class QueueStatusComponent implements OnInit {
+    @Input() queueName: string;
+    @Input() phoneNumber: string;
+    @Input() callsWaiting: number;
+    @Input() adminSession: boolean;
 
-  @Input() queueName: string;
-  @Input() phoneNumber: string;
-  @Input() callsWaiting: number;
-  @Input() adminSession: boolean;
+    @Output() resetEvent = new EventEmitter<boolean>();
 
-  @Output() resetEvent = new EventEmitter<boolean>();
+    constructor() {}
 
-  constructor() { }
+    ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  public triggerReset(): void {
-    this.resetEvent.emit(true);
-  }
+    public triggerReset(): void {
+        this.resetEvent.emit(true);
+    }
 }

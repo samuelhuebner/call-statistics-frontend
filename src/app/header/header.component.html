@@ -1,7 +1,7 @@
 <mat-toolbar>
-    <mat-toolbar-row>
-        <span>
-            {{ appName }}
+    <mat-toolbar-row class="nav__first-row">
+        <span class="nav__logo">
+            <img src="../../assets/images/logo.svg" alt="Telect" />
         </span>
         <span class="nav-spacer"></span>
         <!-- Logout Button (only shown if authenticated) -->
@@ -14,25 +14,19 @@
     <mat-toolbar-row *ngIf="isAuthenticated">
         <span class="navigation-button">
             <button mat-button (click)="router.navigate(['dashboard'])">
-                <span class="material-icons">
-                    dashboard
-                </span>
+                <span class="material-icons"> dashboard </span>
                 Dashboard
             </button>
         </span>
-        <span >
+        <span>
             <button mat-button class="navigation-button">
-                <span class="material-icons">
-                    contacts
-                </span>
+                <span class="material-icons"> contacts </span>
                 Contacts
             </button>
         </span>
         <span *ngIf="isAdmin">
             <button mat-button class="navigation-button" (click)="router.navigate(['settings'])">
-                <span class="material-icons">
-                    settings_applications
-                </span>
+                <span class="material-icons"> settings_applications </span>
                 Settings
             </button>
         </span>

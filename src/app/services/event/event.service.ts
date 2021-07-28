@@ -1,16 +1,16 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class EventService {
-  private eventEmitter: EventEmitter<any>;
+    private eventEmitter: EventEmitter<any>;
 
-  constructor() {
-    this.eventEmitter = new EventEmitter();
-  }
+    constructor() {
+        this.eventEmitter = new EventEmitter();
+    }
 
-  public getEventEmitter(): EventEmitter<any> {
-    return this.eventEmitter;
-  }
+    public getEventEmitter(): EventEmitter<any> {
+        return this.eventEmitter;
+    }
 }

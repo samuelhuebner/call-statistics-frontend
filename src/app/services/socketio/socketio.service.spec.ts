@@ -3,14 +3,14 @@ import { TestBed } from '@angular/core/testing';
 import { SocketioService } from './socketio.service';
 
 describe('SocketioServiceService', () => {
-  let service: SocketioService;
+    let service: SocketioService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(SocketioService);
-  });
+    beforeEach(() => {
+        TestBed.configureTestingModule({});
+        service = TestBed.inject(SocketioService);
+    });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+    it('should be created', () => {
+        expect(service).toBeTruthy();
+    });
 });

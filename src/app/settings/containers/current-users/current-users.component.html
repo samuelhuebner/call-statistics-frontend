@@ -1,11 +1,6 @@
 <div class="current-users__container">
     <h1>Users</h1>
-    <table
-        class="current-users__table"
-        mat-table
-        [dataSource]="currentUsers"
-        class="mat-elevation-z8">
-        
+    <table class="current-users__table" mat-table [dataSource]="currentUsers" class="mat-elevation-z8">
         <!-- Username Column -->
         <ng-container matColumnDef="username">
             <th mat-header-cell *matHeaderCellDef>Username</th>
@@ -42,7 +37,6 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-
 </div>

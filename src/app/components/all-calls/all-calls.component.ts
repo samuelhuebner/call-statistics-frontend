@@ -1,24 +1,30 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Call } from 'src/app/models/Call.model';
 
 @Component({
-  selector: 'app-all-calls',
-  templateUrl: './all-calls.component.html',
-  styleUrls: ['./all-calls.component.scss']
+    selector: 'app-all-calls',
+    templateUrl: './all-calls.component.html',
+    styleUrls: ['./all-calls.component.scss'],
 })
 export class AllCallsComponent implements OnInit, OnChanges {
+    @Input() public calls: Call[];
 
-  @Input() public calls: Call[];
+    public allCalls: MatTableDataSource<Call> = new MatTableDataSource<Call>();
+    public displayedColumns: string[] = [
+        'status',
+        'callInit',
+        'callDirection',
+        'caller',
+        'destination',
+        'callTime',
+        'ringingTime',
+    ];
+    constructor() {}
 
-  public allCalls: MatTableDataSource<Call> = new MatTableDataSource<Call>();
-  public displayedColumns: string[] = ['status', 'callInit', 'callDirection', 'caller', 'destination', 'callTime', 'ringingTime'];
-  constructor() {}
+    ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  ngOnChanges(): void {
-    this.allCalls.data = this.calls;
-  }
+    ngOnChanges(): void {
+        this.allCalls.data = this.calls;
+    }
 }

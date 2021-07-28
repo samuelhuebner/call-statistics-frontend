@@ -4,14 +4,12 @@ import { User } from 'src/app/models/User.model';
 @Component({
     selector: 'app-user',
     templateUrl: './user.component.html',
-    styleUrls: ['./user.component.scss']
+    styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
-    constructor(
-    ) {}
+    constructor() {}
 
     @Input() private user: User;
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 }

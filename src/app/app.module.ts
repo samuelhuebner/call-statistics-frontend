@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { SettingsModule } from './settings/settings.module';
 
@@ -28,45 +28,47 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AllCallsComponent } from './components/all-calls/all-calls.component';
+import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    HeaderComponent,
-    DashboardComponent,
-    QueueStatusComponent,
-    CallComponent,
-    CurrentCallsComponent,
-    AllCallsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatGridListModule,
-    MatBadgeModule,
-    MatIconModule,
-    MatSnackBarModule,
-    MatTableModule,
-    SettingsModule
-  ],
-  providers: [
-    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
-    JwtHelperService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        RegisterComponent,
+        HeaderComponent,
+        DashboardComponent,
+        QueueStatusComponent,
+        CallComponent,
+        CurrentCallsComponent,
+        AllCallsComponent,
+        LoadingIndicatorComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatGridListModule,
+        MatBadgeModule,
+        MatIconModule,
+        MatSnackBarModule,
+        MatTableModule,
+        SettingsModule,
+    ],
+    providers: [
+        { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true,
+        },
+        JwtHelperService,
+    ],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

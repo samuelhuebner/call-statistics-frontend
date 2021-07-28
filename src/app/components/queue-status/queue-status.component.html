@@ -6,15 +6,14 @@
                 <div class="queue-status__row">
                     <mat-icon [matBadge]="callsWaiting" class="queue-status__call-count">call</mat-icon>
                     <mat-icon class="queue-status__reset-queue" *ngIf="adminSession" (click)="triggerReset()">
-                        restart_alt</mat-icon>
+                        restart_alt</mat-icon
+                    >
                 </div>
             </div>
         </mat-card-title>
         <mat-card-subtitle>
             {{ phoneNumber }}
         </mat-card-subtitle>
-        <mat-card-content>
-            {{ callsWaiting }} calls currently waiting
-        </mat-card-content>
+        <mat-card-content> {{ callsWaiting }} calls currently waiting </mat-card-content>
     </mat-card>
 </div>

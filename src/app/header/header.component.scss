@@ -2,12 +2,25 @@
     flex: 1 1 auto;
 }
 
+.nav__logo {
+    max-height: 100%;
+
+    img {
+        max-height: 160px;
+        transform: translate(-50px, -40px);
+    }
+}
+
+.nav__first-row {
+    height: 80px;
+}
+
 .navigation-button {
     margin-right: 20px;
 }
 
-@media screen and (max-width: 450) {
+@media screen and (max-width: 450px) {
     .navigation-button {
-        margin-right: auto; 
+        margin-right: auto;
     }
 }

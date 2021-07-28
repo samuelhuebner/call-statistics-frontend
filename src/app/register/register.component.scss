@@ -9,9 +9,7 @@
     width: 30%;
 }
 
-
 .login__button {
-
 }
 
 .login__link {
@@ -34,7 +32,9 @@ mat-card-actions {
     margin-left: 1px;
 }
 
-mat-card-footer, div, a {
+mat-card-footer,
+div,
+a {
     color: grey;
     text-decoration: none;
     margin-bottom: 5px;

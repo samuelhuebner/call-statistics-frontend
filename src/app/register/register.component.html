@@ -1,11 +1,7 @@
 <div class="container">
     <div class="login__container">
         <mat-card class="login__card">
-            <form 
-                #loginForm="ngForm"
-                novalidate
-                (ngSubmit)="onSubmit(loginForm.value)"
-                >
+            <form #loginForm="ngForm" novalidate (ngSubmit)="onSubmit(loginForm.value)">
                 <mat-card-title>Register</mat-card-title>
                 <mat-card-content>
                     <div>
@@ -20,17 +16,14 @@
                                 required
                                 email
                                 #email="ngModel"
-                                autocomplete="new-password">
-                            
+                                autocomplete="new-password"
+                            />
+
                             <mat-hint class="input__errors" *ngIf="email.touched">
-                                <div *ngIf="email.errors?.email">
-                                    username has to be an email
-                                </div>
-                                <div *ngIf="email.errors?.required">
-                                    username can't be empty
-                                </div>
+                                <div *ngIf="email.errors?.email">username has to be an email</div>
+                                <div *ngIf="email.errors?.required">username can't be empty</div>
                             </mat-hint>
-                            </mat-form-field>
+                        </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field appearance="fill">
@@ -43,11 +36,10 @@
                                 placeholder="password"
                                 ngModel
                                 required
-                                autocomplete="new-password">
+                                autocomplete="new-password"
+                            />
                             <mat-hint class="input__errors" *ngIf="password.touched">
-                                <div *ngIf="password.errors?.required">
-                                    password can't be empty
-                                </div>
+                                <div *ngIf="password.errors?.required">password can't be empty</div>
                             </mat-hint>
                         </mat-form-field>
                     </div>
@@ -56,18 +48,19 @@
                 <mat-card-actions>
                     <button
                         mat-raised-button
-                        color="primary" 
+                        color="primary"
                         type="submit"
                         class="login__button"
-                        [disabled]="!loginForm.valid">Register</button>
+                        [disabled]="!loginForm.valid"
+                    >
+                        Register
+                    </button>
                 </mat-card-actions>
                 <mat-card-footer>
                     <div class="login__link">
                         <a routerLink="/login">Already have an account? Login here</a>
                     </div>
                 </mat-card-footer>
-
-                
             </form>
         </mat-card>
     </div>

@@ -10,15 +10,15 @@ import { LoggedInAuthGuardService as LoggedInAuthGuard } from './services/logged
 import { SettingsPageComponent } from './settings/containers/settings-page/settings-page.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'settings', component: SettingsPageComponent, canActivate: [AdminGuard]},
-  { path: 'login', component: LoginComponent, canActivate: [LoggedInAuthGuard] },
-  { path: 'register', component: RegisterComponent },
-  { path: '**', redirectTo: 'dashboard' }
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'settings', component: SettingsPageComponent, canActivate: [AdminGuard] },
+    { path: 'login', component: LoginComponent, canActivate: [LoggedInAuthGuard] },
+    { path: 'register', component: RegisterComponent },
+    { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+    exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

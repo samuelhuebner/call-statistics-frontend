@@ -13,12 +13,12 @@
     }
 
     min-height: 50px;
-}    
+}
 
 .all-calls__container {
     max-height: 800px;
     overflow: auto;
-    table {
+    table  {
         width: 100%;
     }
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -48,9 +48,9 @@
     max-width: 20% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
-  
+
     word-break: break-word;
-  
+
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
@@ -65,9 +65,9 @@
     max-width: 20% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
-  
+
     word-break: break-word;
-  
+
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;

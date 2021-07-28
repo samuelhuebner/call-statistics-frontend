@@ -3,18 +3,17 @@ import * as io from 'socket.io-client';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class SocketioService {
-  public socket: any;
+    public socket: any;
 
-  constructor() { }
+    constructor() {}
 
-  setupSocketConnection() {
-    this.socket = io(environment.baseUrl, {
-      secure: true,
-      path: `/websocket/socket.io`
-    });
-
-  }
+    setupSocketConnection() {
+        this.socket = io(environment.baseUrl, {
+            secure: true,
+            path: `/websocket/socket.io`,
+        });
+    }
 }
