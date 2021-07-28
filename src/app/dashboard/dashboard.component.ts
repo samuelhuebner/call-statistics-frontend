@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.callApiService.getCalls()
       .then((calls: Call[]) => {
         this.todaysCalls = calls;
-      })
+      });
 
     // this is nessesary to resize the grid if we are in the mobile view!
     this.resizeGrid(window.innerWidth);
@@ -89,37 +89,37 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  async getHotlineOneCallCount() {
+  async getHotlineOneCallCount(): Promise<void> {
     this.callApiService.getWaiting('api/queue-status/hotline1').subscribe((data: any) => {
       this.mainHotlineWaiting = data.callsWaiting;
     });
   }
 
-  async getHotlineTwoCallCount() {
+  async getHotlineTwoCallCount(): Promise<void> {
     this.callApiService.getWaiting('api/queue-status/hotline2').subscribe((data: any) => {
       this.hailHotlineWaiting = data.callsWaiting;
     });
   }
 
-  private processCall(callId: string) {
+  private processCall(callId: string): void {
     this.callApiService.getCurrentCalls()
       .then((res: Call[]) => this.currentCalls = res);
   }
 
-  private removeCall(callId: string) {
-    this.currentCalls = this.currentCalls.filter((item) => item.callId != callId);
+  private removeCall(callId: string): void {
+    this.currentCalls = this.currentCalls.filter((item) => item.callId !== callId);
     setTimeout(this.delayed.bind(this), 1000);
   }
 
 
-  private delayed() {
+  private delayed(): void {
     this.callApiService.getCalls()
       .then((res: Call[]) => {
         this.todaysCalls = res;
       });
   }
 
-  public endCall(call: Call) {
+  public endCall(call: Call): void {
     this.callApiService.endCall(call.callId);
   }
 

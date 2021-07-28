@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Call } from 'src/app/models/Call.model';
 
@@ -7,11 +7,11 @@ import { Call } from 'src/app/models/Call.model';
   templateUrl: './all-calls.component.html',
   styleUrls: ['./all-calls.component.scss']
 })
-export class AllCallsComponent implements OnInit {
+export class AllCallsComponent implements OnInit, OnChanges {
 
   @Input() public calls: Call[];
 
-  public allCalls: MatTableDataSource<Call> = new MatTableDataSource<Call>();;
+  public allCalls: MatTableDataSource<Call> = new MatTableDataSource<Call>();
   public displayedColumns: string[] = ['status', 'callInit', 'callDirection', 'caller', 'destination', 'callTime', 'ringingTime'];
   constructor() {}
 
@@ -21,5 +21,4 @@ export class AllCallsComponent implements OnInit {
   ngOnChanges(): void {
     this.allCalls.data = this.calls;
   }
-
 }

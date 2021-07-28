@@ -1,6 +1,6 @@
 import { CallDestination } from './CallDestination.model';
 
-export interface CallRinging { 
+export interface CallRinging {
     id: number;
     callId: string;
     callRingingTime: Date;
